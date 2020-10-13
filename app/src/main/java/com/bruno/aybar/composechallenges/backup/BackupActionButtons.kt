@@ -65,13 +65,13 @@ fun BackupActionButtons(
         BackupButton(
             onClick = onBackup,
             transition = transition,
-            modifier = Modifier.gravity(Alignment.Center)
+            modifier = Modifier.align(Alignment.Center)
         )
 
         CancelButton(
             onClick = onCancel,
             transition = transition,
-            modifier = Modifier.gravity(Alignment.Center)
+            modifier = Modifier.align(Alignment.Center)
         )
 
     }
