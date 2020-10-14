@@ -1,11 +1,16 @@
 package com.bruno.aybar.composechallenges.batman
 
+import androidx.compose.foundation.BaseTextField
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.drawLayer
@@ -14,8 +19,10 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.ui.tooling.preview.Preview
 import com.bruno.aybar.composechallenges.R
 import com.bruno.aybar.composechallenges.common.AbsoluteAlignment
 
@@ -45,7 +52,7 @@ fun BatmanWelcomeHint(modifier: Modifier) {
 enum class BatmanButtonIconPosition { Left, Right }
 
 @Composable
-fun BatmanPageButtons(modifier: Modifier) {
+fun BatmanPageButtons(modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         BatmanButton(onClick = { }, label = "LOGIN", iconPosition = BatmanButtonIconPosition.Right)
         Spacer(modifier = Modifier.height(16.dp))
@@ -110,5 +117,51 @@ fun BatmanImage(maxWidth: Dp, batmanSizeMultiplier: Float) {
             ,
             contentScale = ContentScale.FillWidth
         )
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun BatmanInput(label: String, displayIcon: Boolean = false) {
+//    OutlinedTextField(
+//        value = TextFieldValue(""),
+//        onValueChange = {},
+//        label = { Text(text = label, style = MaterialTheme.typography.caption) },
+//        activeColor = MaterialTheme.colors.onSurface,
+//        trailingIcon = {
+//            if (displayIcon) {
+//                Image(
+//                    asset = imageResource(R.drawable.batman_logo),
+//                    modifier = Modifier.size(width = 40.dp, height = 20.dp)
+//                )
+//            }
+//        }
+//    )
+    BaseTextField(
+        value = TextFieldValue(),
+        onValueChange = {  }
+    )
+}
+
+@Composable
+fun BatmanSignUpInputs(modifier: Modifier = Modifier) {
+    Column(modifier.preferredWidth(300.dp)) {
+        BatmanInput("FULL NAME")
+        BatmanInput("EMAIL ID")
+        BatmanInput("PASSWORD", displayIcon = true)
+    }
+}
+
+@Preview
+@Composable
+private fun ComponentsPreview() {
+    BatmanTheme {
+        Surface {
+            Column(Modifier.padding(8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                BatmanSignUpInputs()
+                Spacer(modifier = Modifier.height(8.dp))
+                BatmanPageButtons()
+            }
+        }
     }
 }
