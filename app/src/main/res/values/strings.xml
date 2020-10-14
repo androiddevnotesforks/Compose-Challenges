@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Compose Challenges</string>
+
+    <!-- BATMAN RESOURCES -->
+    <string name="batman_welcome_to">WELCOME TO</string>
+    <string name="batman_gotham_city">GOTHAM CITY</string>
+    <string name="batman_need_access">YOU NEED ACCESS TO ENTER THE CITY</string>
+
 </resources>
